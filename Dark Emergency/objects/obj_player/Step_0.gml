@@ -40,6 +40,7 @@ else
 #endregion
 
 
+
 angle = degtorad(image_angle)*-1
 
 xoffset = +90;
