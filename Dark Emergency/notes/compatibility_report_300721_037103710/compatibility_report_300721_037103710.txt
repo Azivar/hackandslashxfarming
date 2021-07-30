@@ -1,0 +1,19 @@
+Converting GML script: ${project_dir}\scripts\Getfire\Getfire.gml
+Converted description /// @description  Getfire(x,y,intensity,speed,width,sprite,distance,size);/// @param x
+/// @param y
+/// @param intensity
+/// @param speed
+/// @param width
+/// @param sprite
+/// @param distance
+/// @param size
+
+Converting GML script: ${project_dir}\scripts\GetfireCreate\GetfireCreate.gml
+Converted description /// @description  GetfireCreate();
+
+Converting GML script: ${project_dir}\scripts\GetfireCreateColour\GetfireCreateColour.gml
+Converted description /// @description  GetfireCreateColour();
+
+Added compatibility script 'instance/instance_create.gml'
+Added compatibility script 'object/object_get_depth.gml'
+Added compatibility script '__global_object_depths.gml'
