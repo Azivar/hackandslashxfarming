@@ -5,6 +5,16 @@ if (inventory24){
 }else if (inventory16){
 	max_items = 16	
 }
+inventory[24] = 0
+for(var i = 0; i < max_items;i++){
+	lockInv[i] = 0	
+}
+equipped[0] = inventory[0];
+equipped[1] = inventory[1];
+
+
+
+
 if (leftRight){
 	global.use = equipped[1]	
 }else if (!leftRight){
@@ -45,8 +55,63 @@ if (totalSeconds < 43200){
 		global.daytime	= ((daylight - 14400)/10000)
 	}
 }
+keyInv = keyboard_check_pressed(vk_tab);
+if (keyInv){
+	InvOpen = !InvOpen	
+}
 
+if (InvOpen){
+	mousex = device_mouse_x_to_gui(0);	
+	mousey = device_mouse_y_to_gui(0);
+	var i_mousex = mousex - cell_slot_x 
+	var i_mousey = mousey - cell_slot_y
 
+	var nx = i_mousex div cellx_buffer
+	var ny = i_mousey div celly_buffer
+	if (nx >= 0 and nx < invWidth) and (ny >= 0 and ny < invHeight){
+		mouse_slotX = nx
+		mouse_slotY = ny
+	}
+	
+	//set selected slot
+	selected_slot = min(max_items, mouse_slotX + (mouse_slotY*invWidth));
+	//PickUp Item
+
+	var ss_item = inventory[selected_slot];
+	
+	
+	
+	if (pickup_slot != -1){
+		if (mouse_check_button_pressed(mb_left)){
+			if (ss_item == Items.nothing){
+				inventory[selected_slot] = inventory[pickup_slot]
+				inventory[pickup_slot] = 0
+				
+				pickup_slot = -1;
+			}else if (ss_item == pickup_slot){
+				 pickup_slot = -1
+			}else if (ss_item != pickup_slot){
+				inventory[selected_slot] = inventory[pickup_slot]	
+				inventory[pickup_slot] = ss_item
+			}
+		}
+	}else if (ss_item != 0){
+		// Dropping Item
+		if (mouse_check_button_pressed(mb_right)){
+			inventory[selected_slot] = 0;	
+			// create objects to drop
+			var inst = instance_create_layer(obj_player.x,obj_player.y,"player",obj_item)
+			inst.image_index = ss_item; 
+		}
+		if (mouse_check_button_pressed(mb_left)){
+			pickup_slot = selected_slot;
+		}
+	}
+	
+	
+	
+	
+}
 
 
 

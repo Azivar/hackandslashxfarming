@@ -60,7 +60,7 @@
     "eventStubScript": null,
     "parent": {"name":"spr_soft_wall","path":"sprites/spr_soft_wall/spr_soft_wall.yy",},
     "resourceVersion": "1.3",
-    "name": "",
+    "name": "spr_soft_wall",
     "tags": [],
     "resourceType": "GMSequence",
   },

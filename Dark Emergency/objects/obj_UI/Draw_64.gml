@@ -40,8 +40,11 @@ if (keyQ){
 	leftRight = !leftRight;
 	
 }
+slot[1] = 0
 switch (leftRight){
 	case 0://Slot 1
+	slot[0] = 0
+	slot[1] = 1
 	draw_sprite_ext(spr_quick_equipped,0,cell_x*2,cell_y*50,equppied_scale,equppied_scale,0,c_white,1);		
 	draw_sprite_ext(spr_quick_equip_frame,0,cell_x*2,cell_y*50,frame_scale,frame_scale,0,c_white,1);
 	draw_sprite_ext(spr_inventory,equipped[0],cell_x*2-(cell_x/2),cell_y*55,gun_scale,gun_scale,45,c_white,1);
@@ -51,6 +54,8 @@ switch (leftRight){
 	draw_sprite_ext(spr_inventory,equipped[1],cell_x*8-(cell_x/2),cell_y*55,gun_scale,gun_scale,45,c_white,1);
 	break;
 	case 1://Slot 1
+	slot[0] = 1
+	slot[1] = 0
 	draw_sprite_ext(spr_quick_equipped,1,cell_x*2,cell_y*50,equppied_scale,equppied_scale,0,c_white,1);
 	draw_sprite_ext(spr_quick_equip_frame,0,cell_x*2,cell_y*50,frame_scale,frame_scale,0,c_white,1);
 	draw_sprite_ext(spr_inventory,equipped[0],cell_x*2-(cell_x/2),cell_y*55,gun_scale,gun_scale,45,c_white,1);
@@ -60,30 +65,47 @@ switch (leftRight){
 	draw_sprite_ext(spr_inventory,equipped[1],cell_x*8-(cell_x/2),cell_y*55,gun_scale,gun_scale,45,c_white,1);
 	break;	
 }
-var locked_slot_scale = .67
-keyInv = keyboard_check_pressed(ord("I"));
-if (keyInv){
-	InvOpen = !InvOpen	
-}
+cell_slot_x = cell_x*21
+cellx_buffer = cell_x*4.35
+cell_slot_y = cell_y*23
+celly_buffer = cell_y*8
+gun_ybuffer = cell_y*5
 if (InvOpen){
-		draw_sprite_ext(spr_inventory_background,0,cell_x*20,cell_y*8,1.5,1,0,c_dkgray,1)
-		for (var i = 0;i < 8; i++){
-			draw_sprite_ext(spr_inventory_slot_background,0,cell_x*21+(i*(cell_x*4.35)),cell_y*15,.5,.5,0,c_white,1)
+		draw_sprite_ext(spr_inventory_background,0,cell_x*20,cell_y*10,1.5,1,0,c_dkgrey,1);
+var ii = 0;	
+ for(var i = 0; i < invHeight; i++){
+	for(var j = 0; j < invWidth; j++){
+		
+		switch(ii){
+		case 0:
+			draw_sprite_ext(spr_quick_equipped,slot[ii],cell_slot_x+(cellx_buffer*j),cell_slot_y+(celly_buffer*i),equppied_scale*.80,equppied_scale*.80,0,c_white,1);
+			draw_sprite_ext(spr_inventory,inventory[ii],cell_slot_x+(cellx_buffer*j),cell_slot_y+(celly_buffer*i)+gun_ybuffer,gun_scale,gun_scale,45,c_white,1);
+		break;
+		case 1:
+			draw_sprite_ext(spr_quick_equipped,slot[ii],cell_slot_x+(cellx_buffer*j),cell_slot_y+(celly_buffer*i),equppied_scale*.80,equppied_scale*.80,0,c_white,1);
+			draw_sprite_ext(spr_inventory,inventory[ii],cell_slot_x+(cellx_buffer*j),cell_slot_y+(celly_buffer*i)+gun_ybuffer,gun_scale,gun_scale,45,c_white,1);
+		break;
+		case selected_slot:
+			draw_sprite_ext(spr_inventory_slot_background,lockInv[ii],cell_slot_x+(cellx_buffer*j),cell_slot_y+(celly_buffer*i),1,1,0,c_blue,1);
+			draw_sprite_ext(spr_inventory,inventory[ii],cell_slot_x+(cellx_buffer*j),cell_slot_y+(celly_buffer*i)+gun_ybuffer,gun_scale,gun_scale,45,c_white,1);
+		break;
+		case pickup_slot:
+			draw_sprite_ext(spr_inventory_slot_background,lockInv[ii],cell_slot_x+(cellx_buffer*j),cell_slot_y+(celly_buffer*i),1,1,0,c_blue,1);
+			draw_sprite_ext(spr_inventory,inventory[ii],cell_slot_x+(cellx_buffer*j),cell_slot_y+(celly_buffer*i)+gun_ybuffer,gun_scale,gun_scale,45,c_white,.2);
+		break;
+		
+		default:
+			draw_sprite_ext(spr_inventory_slot_background,lockInv[ii],cell_slot_x+(cellx_buffer*j),cell_slot_y+(celly_buffer*i),1,1,0,c_white,1);
+			draw_sprite_ext(spr_inventory,inventory[ii],cell_slot_x+(cellx_buffer*j),cell_slot_y+(celly_buffer*i)+gun_ybuffer,gun_scale,gun_scale,45,c_white,1);
+		break;
 		}
-		for (var i = 0;i < 8; i++){
-			if (!inventory16){
-				draw_sprite_ext(spr_inventory_locked_slot,0,cell_x*21+(i*(cell_x*4.35)),cell_y*23,locked_slot_scale,locked_slot_scale,0,c_white,1)
-			}else{
-				draw_sprite_ext(spr_inventory_slot_background,0,cell_x*21+(i*(cell_x*4.35)),cell_y*23,.5,.5,0,c_white,1)
-			}
-		}
-		for (var i = 0;i < 8; i++){
-			if (!inventory24){
-				draw_sprite_ext(spr_inventory_locked_slot,0,cell_x*21+(i*(cell_x*4.35)),cell_y*32,locked_slot_scale,locked_slot_scale,0,c_white,1)
-			}else{
-				draw_sprite_ext(spr_inventory_slot_background,0,cell_x*21+(i*(cell_x*4.35)),cell_y*31,.5,.5,0,c_white,1)
-			}
-		}
+	ii++;
+	} 
+ }
+ 
+if(pickup_slot != -1){
+	draw_sprite_ext(spr_inventory,inventory[pickup_slot],mousex,mousey,gun_scale,gun_scale,45,c_white,1);
+}
 	
 }
 

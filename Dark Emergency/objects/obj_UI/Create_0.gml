@@ -20,6 +20,8 @@ _height = display_get_gui_height()
 
 cell_x = _width/64
 cell_y = _height/64
+pickup_slot = -1;
+selected_slot = 0;
 
 keyQ = false
 InvOpen = false
@@ -30,17 +32,32 @@ global.use = 0
 globalvar max_items;
 globalvar max_equipped;
 globalvar inventory;
+max_items = 8
+inventory[max_items] = 0;
 max_equipped = 1;
 max_items = 8;
-inventory[max_items] = 0;
 globalvar equipped;
 equipped[max_equipped] = 0;
-equipped[0] = Items.PlasmaRifle;
-equipped[1] = Items.MiniFun;
-totalSeconds = 0
+lockInv[24] = 1;
+for(var i = 0; i < 24;i++){
+	lockInv[i] = 1
+}
+inventory[0] = 6
+inventory[1] = 7
+inventory[2] = 8
+inventory[3] = 9
+inventory[4] = 10
+
+mouse_slotX = 0
+mouse_slotY = 0
+slot[1] = 0  
+
+invHeight = 3
+invWidth = 8
+totalSeconds = 43200
 time_multply = 10
-daylight = 0
-global.daytime = 0
+daylight = 43200
+global.daytime = 43200
 
 timer_w = cell_x*56
 timer_h = cell_y*2

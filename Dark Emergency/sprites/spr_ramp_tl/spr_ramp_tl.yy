@@ -60,7 +60,7 @@
     "eventStubScript": null,
     "parent": {"name":"spr_ramp_tl","path":"sprites/spr_ramp_tl/spr_ramp_tl.yy",},
     "resourceVersion": "1.3",
-    "name": "",
+    "name": "spr_ramp_tl",
     "tags": [],
     "resourceType": "GMSequence",
   },
