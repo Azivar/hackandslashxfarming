@@ -54,10 +54,10 @@ slot[1] = 0
 
 invHeight = 3
 invWidth = 8
-totalSeconds = 43200
+totalSeconds = 0
 time_multply = 10
-daylight = 43200
-global.daytime = 43200
+daylight = 0
+global.daytime = 0
 
 timer_w = cell_x*56
 timer_h = cell_y*2
