@@ -5,14 +5,16 @@
 if (hours >= 5)and (hours < 13){
 	if (dayseconds mod 60 = 0){
 		light[| eLight.Direction] -= .2;	
-		light[| eLight.Intensity] += .01
-		light[| eLight.ShadowLength] -= 1.66
+		light[| eLight.Intensity] += .005
+		light[| eLight.ShadowLength] -= 1
+		global.ambientShadowIntensity -= .0005
 	}
 }else if (hours >= 13) and (hours < 21){
 		if (dayseconds mod 60 = 0){
 			light[| eLight.Direction] -= .2;	
-			light[| eLight.Intensity] -= .01
-			light[| eLight.ShadowLength] += 1.66
+			light[| eLight.Intensity] -= .005
+			light[| eLight.ShadowLength] += 1
+			global.ambientShadowIntensity += .0005
 		} 
 }else {
 			light[| eLight.Direction] =	330

@@ -1,7 +1,7 @@
 {
   "parent": {
     "name": "Lighting",
-    "path": "folders/Notes/Lighting.yy",
+    "path": "folders/Fonts/Notes/Lighting.yy",
   },
   "resourceVersion": "1.1",
   "name": "Contributors",

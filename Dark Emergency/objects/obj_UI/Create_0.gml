@@ -56,7 +56,7 @@ slot[1] = 0
 
 invHeight = 3
 invWidth = 8
-time_multply = 60
+time_multply = 30
 
 
 timer_w = cell_x*56
