@@ -9,7 +9,7 @@ globalvar hours;
 globalvar day;
 count_up = true
 day = 0
-hours = 0
+hours = 5
 minutes = 0
 seconds = 0
 play_stamina = 100;
@@ -32,6 +32,8 @@ global.use = 0
 globalvar max_items;
 globalvar max_equipped;
 globalvar inventory;
+globalvar dayseconds;
+dayseconds = 0;
 max_items = 8
 inventory[max_items] = 0;
 max_equipped = 1;
@@ -54,10 +56,8 @@ slot[1] = 0
 
 invHeight = 3
 invWidth = 8
-totalSeconds = 0
-time_multply = 10
-daylight = 0
-global.daytime = 0
+time_multply = 60
+
 
 timer_w = cell_x*56
 timer_h = cell_y*2

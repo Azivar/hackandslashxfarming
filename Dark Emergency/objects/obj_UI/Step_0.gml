@@ -24,36 +24,24 @@ if (leftRight){
 
 if (count_up == true){
 	seconds += (delta_time/1000000)*time_multply
-	totalSeconds += (delta_time/1000000)*time_multply
+	dayseconds += (delta_time/1000000)*time_multply
 }
 if (seconds >= 60 and seconds >= 59.9){
 		seconds = 0;
 		minutes++;
+		dayseconds = 0;
 }
 if (minutes == 60){
 	minutes = 0;
 	hours++;
 }
 if (hours = 24){
-	totalSeconds = 0
 	seconds = 0
 	minutes = 0
 	hours = 0
 	day++;
-}
-global.daytime = 0
 
-
-if (totalSeconds < 43200){
-	daylight += (delta_time/1000000)*time_multply
-	if (daylight > 14401){
-		global.daytime	= (daylight - 14400)/10000
-	}
-}else if (totalSeconds > 43200){
-	daylight -= (delta_time/1000000)*time_multply
-	if (daylight > 14401 ){
-		global.daytime	= ((daylight - 14400)/10000)
-	}
+	
 }
 keyInv = keyboard_check_pressed(vk_tab);
 if (keyInv){

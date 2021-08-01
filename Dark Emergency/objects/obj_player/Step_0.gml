@@ -58,7 +58,7 @@ light[| eLight.Direction] = direction;
 light2[| eLight.X] = x
 light2[| eLight.Y] = y
 light2[| eLight.Direction] = direction;
-light2[| eLight.Intensity] = global.daytime
+light2[| eLight.Intensity] = 0.5
 
 if (mouse_check_button(mb_left) and (fireing < 0)){
 	

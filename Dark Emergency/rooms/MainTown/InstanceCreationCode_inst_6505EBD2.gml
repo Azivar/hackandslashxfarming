@@ -1,0 +1,1 @@
+light[| eLight.Direction]-= 90;

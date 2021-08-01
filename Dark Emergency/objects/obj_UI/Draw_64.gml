@@ -3,7 +3,9 @@
 draw_set_font(ft_timer)
 draw_set_color(c_lime)
 	draw_text(timer_w-cell_x*6,timer_h,"Day: " +string(day))
-	draw_text(cell_x*15,timer_h,"DayLight " +string(global.daytime))
+	draw_text(cell_x*15,timer_h,"DayLight  " +string(THESUN.light[|eLight.Intensity]))
+	draw_text(cell_x*15,timer_h+25,"DayDirection " +string(THESUN.light[|eLight.Direction]))
+	draw_text(cell_x*15,timer_h+50,"DayShadow " +string(THESUN.light[|eLight.ShadowLength]))
 if (seconds < 10) and (minutes < 10){
 	draw_text(timer_w,timer_h,string(hours) + ":0" + string(minutes) + ":0" + string(round(seconds)))	
 }
